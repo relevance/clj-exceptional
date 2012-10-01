@@ -1,6 +1,6 @@
-(defproject com.dsci/clj-exceptional "0.7.2-SNAPSHOT"
-  :description "Clojure client for Exceptional http://getexceptional.com (dsci fork with up-to-date deps)"
-  :url "https://github.com/zkim/clj-exceptional"
+(defproject clj-exceptional "0.7.2-SNAPSHOT"
+  :description "Clojure client for Exceptional http://exceptional.io"
+  :url "https://github.com/relevance/clj-exceptional"
   :dependencies [[cheshire "4.0.1"]
                  [clj-http "0.4.0"]]
   :profiles {:dev {:dependencies [[swank-clojure "1.2.0"]
