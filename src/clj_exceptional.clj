@@ -117,7 +117,14 @@
 ;; Usage
 ;;
 
-(defn post [exc-map]
+(defn post
+  "Posts the given exception map to Exceptional.io."
+  [exc-map]
+  (println "Posting"
+           (pr-str exc-map)
+           "to http://api.exceptional.io/api/errors with"
+           :query-params {:api_key @_api-key
+                          :protocol_version "6"})
   (client/post "http://api.exceptional.io/api/errors"
                {:query-params {:api_key @_api-key
                                :protocol_version "6"}
