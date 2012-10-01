@@ -5,10 +5,10 @@
   (:import [java.text SimpleDateFormat])
   (:refer-clojure :exclude [try]))
 
-(def *root-dir* (.getAbsolutePath (java.io.File. "")))
+(def root-dir (.getAbsolutePath (java.io.File. "")))
 (def date-format "yyyy-MM-dd'T'HH:mm:ssZZZZ")
 (def date-formatter (SimpleDateFormat. date-format))
-(def _api-key (atom ""))
+(def ^:dynamic _api-key (atom ""))
 (def _language (atom "clojure"))
 (def _language-version (atom (clojure-version)))
 
@@ -107,7 +107,7 @@
           (message (.getMessage e))
           (occured (now-iso)))
          (appenv
-          (root-dir *root-dir*)
+          (root-dir root-dir)
           (env java-env)
           (language @_language)
           (language-version @_language-version))
@@ -118,7 +118,7 @@
 ;;
 
 (defn post [exc-map]
-  (client/post "http://api.getexceptional.com/api/errors"
+  (client/post "http://api.exceptional.io/api/errors"
                {:query-params {:api_key @_api-key
                                :protocol_version "6"}
                 :body (cutil/gzip (.getBytes (che/generate-string exc-map)))}))
